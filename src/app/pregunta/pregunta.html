@@ -19,32 +19,31 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row" class="text-muted">1</th>
-            <td><span class="badge bg-secondary">1</span></td>
-            <td class="fw-bold">¿Cuál es tu lenguaje de programación favorito?</td>
-            <td class="text-secondary">Esta pregunta evalúa la preferencia tecnológica del candidato.</td>
-            <td><span class="badge bg-info text-dark">5 pts</span></td>
-            <td class="text-center">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-warning btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
-                <button type="button" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-muted">2</th>
-            <td><span class="badge bg-secondary">2</span></td>
-            <td>¿Qué es la inyección de dependencias?</td>
-            <td class="text-secondary">Concepto clave de arquitectura de software y desacoplamiento.</td>
-            <td><span class="badge bg-info text-dark">10 pts</span></td>
-            <td class="text-center">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-warning btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
-                <button type="button" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
-              </div>
-            </td>
-          </tr>
+            @if (lista.length > 0)
+            {
+                @for (pregunta of lista; track pregunta.id; let i = $index)
+                {
+                <tr>
+                    <th scope="row" class="text-muted">{{ pregunta.id }}</th>
+                    <td><span class="badge bg-secondary">{{ pregunta.enunciado }}</span></td>
+                    <td class="fw-bold">{{ pregunta.orden }}</td>
+                    <td class="text-secondary">{{ pregunta.descripcion }}</td>
+                    <td><span class="badge bg-info text-dark">{{ pregunta.peso }}</span></td>
+                    <td class="text-center">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-warning btn-sm" title="Editar"><i class="bi bi-pencil"></i></button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                    </div>
+                    </td>
+                </tr>
+                }
+            }
+            @else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4"></td>
+                </tr>
+            }
         </tbody>
       </table>
     </div>
